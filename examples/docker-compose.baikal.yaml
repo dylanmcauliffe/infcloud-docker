@@ -21,14 +21,14 @@ services:
       traefik.frontend.rule: "Host: infcloud.localhost"
       traefik.port: 80
     volumes:
-      - infcloud:/usr/share/nginx/infcloud
+      - ./infcloud:/usr/share/nginx/infcloud
       - ./config-baikal.js:/usr/share/nginx/infcloud/config.js:ro
 
   php:
     image: php:7.3-fpm-alpine
     restart: always
     volumes:
-      - infcloud:/usr/share/nginx/infcloud:ro
+      - ./infcloud:/usr/share/nginx/infcloud:ro
 
   # IMPORTANT: For current configuration examples, see
   #   - Simple Baikal example: https://github.com/ckulka/baikal-docker/blob/master/examples/docker-compose.yaml
