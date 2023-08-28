@@ -334,7 +334,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 var globalNetworkCheckSettings = {
   href: location.protocol + '//baikal.localhost' +
     (location.port ? ':' + location.port : '') +
-    '/cal.php/calendars/',
+    '/dav.php/principals/',
   timeOut: 90000,
   lockTimeOut: 10000,
   checkContentType: true,
@@ -403,7 +403,7 @@ var globalBackgroundSync = true;
 // This option defines how often (in miliseconds) are resources/collections
 // asynchronously synchronized.
 // Example:
-var globalSyncResourcesInterval = 120000;
+var globalSyncResourcesInterval = 30000;
 
 
 // globalEnableRefresh
@@ -415,7 +415,7 @@ var globalSyncResourcesInterval = 120000;
 // If undefined or false, the synchronization button is disabled.
 // NOTE: enable this option only if you really know what are you doing!
 // Example:
-var globalEnableRefresh = false;
+var globalEnableRefresh = true;
 
 
 // globalEnableKbNavigation
@@ -540,7 +540,7 @@ var globalNewVersionNotifyUsers = [];
 // globalDatepickerFirstDayOfWeek
 // Set the datepicker first day of the week: Sunday is 0, Monday is 1, etc.
 // Example:
-var globalDatepickerFirstDayOfWeek = 1;
+var globalDatepickerFirstDayOfWeek = 0;
 
 
 // globalHideInfoMessageAfter
@@ -751,7 +751,7 @@ var globalTimeZoneSupport = true;
 // timezones (defined in timezones.js):
 // grep "'[^']\+': {" timezones.js | sed -Ee "s#(\s*'|':\s*\{)##g"
 // Example:
-var globalTimeZone = 'Europe/Berlin';
+var globalTimeZone = 'America/Los_Angeles';
 
 
 // globalTimeZonesEnabled
@@ -990,10 +990,7 @@ var globalUriHandlerUrl = 'http://';
 var globalUriHandlerProfile = {
   'twitter': 'http://twitter.com/%u',
   'facebook': 'http://www.facebook.com/%u',
-  'flickr': 'http://www.flickr.com/photos/%u',
-  'linkedin': 'http://www.linkedin.com/in/%u',
-  'myspace': 'http://www.myspace.com/%u',
-  'sinaweibo': 'http://weibo.com/n/%u'
+  'linkedin': 'http://www.linkedin.com/in/%u'
 };
 
 
@@ -1406,7 +1403,56 @@ var globalGroupContactsByCompanies = false;
 // ];
 //
 // NOTE: if left undefined, the recommended settings will be used.
-
+var globalCollectionDisplay=[
+        {
+                label: '{Name}',
+                value: ['{LastName}, ', ' {FirstName}', ' {MiddleName}']
+        },
+        {
+                label: '{PhoneCell}',
+                value: ['{Phone[type=cell]}']
+        },
+        {
+                label: '{PhoneHome}',
+                value: ['{Phone[type=home]}']
+        },
+        {
+                label: '{EmailHome}',
+                value: ['{Email[type=home][:0]}', ',{Email[type=home][:1]}']
+        },
+        {
+                label: '{Company} [{Department}]',
+                value: ['{Company}', ' [{Department}]']
+        },
+        {
+                label: '{PhoneMain}',
+                value: ['{Phone[type=main]}']
+        },
+        {
+                label: '{JobTitle}',
+                value: ['{JobTitle}']
+        },
+        {
+                label: '{EmailWork}',
+                value: ['{Email[type=work]}']
+        },
+        {
+                label: '{PhoneWork}',
+                value: ['{Phone[type=work]}']
+        },
+        {
+                label: '{Phone} 1',
+                value: ['{Phone[:0]}',',{Phone[:1]}',',{Phone[:2]}',',{Phone[:3]}',',{Phone[:4]}']
+        },
+        {
+                label: '{Email} 2',
+                value: ['{Email[:0]}',',{Email[:1]}',',{Email[:2]}',',{Email[:3]}',',{Email[:4]}']
+        },
+        {
+                label: '{NoteText}',
+                value: ['{NoteText}']
+        }
+];
 
 // globalCollectionSort
 // This options sets the ordering of contacts in the interface. In general
@@ -1434,6 +1480,6 @@ var globalGroupContactsByCompanies = false;
 // to 0.95 then 95% of data will fit into the column width, and the remaining
 // 5% will be truncated (" ...").
 // Example:
-var globalContactDataMinVisiblePercentage = 0.95;
+var globalContactDataMinVisiblePercentage = 0.99;
 
 
